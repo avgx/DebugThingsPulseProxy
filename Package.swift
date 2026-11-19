@@ -1,4 +1,4 @@
-// swift-tools-version: 6.1
+// swift-tools-version: 6.2
 
 import PackageDescription
 
@@ -16,8 +16,9 @@ let package = Package(
         .library(name: "DebugThingsPulseProxy", targets: ["DebugThingsPulseProxy"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/avgx/DebugThings.git", from: "2.0.0"),
-        .package(url: "https://github.com/apple/swift-log.git", from: "1.12.0"),
+        .package(url: "https://github.com/avgx/DebugThings.git", from: "3.0.0"),
+        .package(url: "https://github.com/apple/swift-log.git", from: "1.13.2"),
+        .package(url: "https://github.com/apple/swift-log-oslog", from: "0.1.0"),
         .package(url: "https://github.com/kean/Pulse.git", from: "5.2.1")
     ],
     targets: [
@@ -25,6 +26,7 @@ let package = Package(
             name: "DebugThingsPulseProxy",
             dependencies: [
                 .product(name: "DebugThings", package: "DebugThings"),
+                .product(name: "OSLogHandler", package: "swift-log-oslog"),
                 .product(name: "Pulse", package: "Pulse"),
                 .product(name: "Logging", package: "swift-log"),
             ],

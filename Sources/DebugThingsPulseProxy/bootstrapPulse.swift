@@ -1,6 +1,6 @@
 import Foundation
 import Logging
-import OSLog
+import OSLogHandler
 import DebugThings
 
 extension DebugThings {
@@ -53,11 +53,10 @@ extension DebugThings {
             }
             handlers.append(pulseHandler)
 
-            let osLogger = os.Logger(
+            var osLogHandler = OSLogHandler(
                 subsystem: subsystem ?? Bundle.main.bundleIdentifier ?? "default",
                 category: label
             )
-            var osLogHandler = OSLogHandler(logger: osLogger)
             osLogHandler.logLevel = level
             if let metadata {
                 osLogHandler.metadata = metadata
